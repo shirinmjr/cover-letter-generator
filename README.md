@@ -101,10 +101,10 @@ Sincerely,
 
 ## 🎯 **Future Enhancements**:
 
-- Add support for multiple templates based on job roles or industries.
-- Include additional document styling (logos, headers, footers).
-- Integrate a web-based interface for non-technical users.
-- Provide additional export formats (e.g., Word, HTML).
+- Deliver PDFs in a Single Compressed File: The user will receive all generated PDF cover letters packaged in a single .zip file for easy download and organization.
+- Web-Based Interface for Non-Technical Users: A full-stack web application where users can upload their CSV file and receive the cover letters in a single downloadable .zip file. This interface will ensure a smooth and user-friendly experience.
+- Template Customization via UI: Allow users to edit the cover letter template directly through the web interface. Users can modify the template based on their needs and select placeholders or shortcodes via an intuitive UI for a seamless and personalized experience.
+- Enhanced Document Styling: Add options to include professional styling elements such as company logos, headers, footers, and custom fonts to create polished and visually appealing cover letters.
 
 ## ✍️ Authors
 @Shirinmjr

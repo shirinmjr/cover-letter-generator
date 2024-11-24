@@ -24,7 +24,7 @@ Here’s an updated and detailed README file that incorporates the specified tec
 
 At our company, we frequently need to generate dynamic PDF documents—such as reports, invoices, and cover letters—for various clients. Customization, readability, and accuracy are crucial when creating these documents.
 
-This project demonstrates how to generate PDF cover letters dynamically using the data from a CSV file. It replaces placeholder text in a predefined cover letter template with specific values from the provided CSV.
+This project demonstrates how to generate PDF cover letters dynamically using the data from a CSV file and PDFKit. It replaces placeholder text in a predefined cover letter template with specific values from the provided CSV.
 
 ---
 
@@ -53,17 +53,21 @@ This project demonstrates how to generate PDF cover letters dynamically using th
 
 - Install dependencies:
   ```bash
-  npm install express pdfkit csv-parser
+  npm install express pdfkit
   ```
 
 ### 2️⃣ **Process CSV Data**:
 
-- Read and parse the CSV file using `csv-parser`.
-- Extract relevant fields and map them to placeholders.
+- Read and parse the CSV file using pre built JavaScript File System Library and `readFileSync` function.
+- Extract relevant fields from CSV file
+  - Split by line and remove empty rows - perhaps the end of the file,
+  - First row is the headers(Json keys),
+  - Split row by commas and replace "" where Job title not provided with empty string,
+- Map each header to its corresponding value (Key,value) pair
 
 ### 3️⃣ **Generate PDF**:
 
-- Use `PDFKit` to:
+- Use [`PDFKit`](https://pdfkit.org/) to:
   - Write text content.
   - Replace placeholders with actual values.
   - Style the document (fonts, colors, margins, etc.).
@@ -100,18 +104,24 @@ Sincerely,
 ## 📂 **Project Structure**:
 
 ```plaintext
-dynamic-cover-letter-generator/
-├── input/
-│   └── companies.csv           # Input CSV file
-├── output/
-│   └── company-name-cover-letter.pdf  # Generated PDFs
-├── src/
-│   ├── generatePdf.js          # PDF generation logic
-│   ├── parseCsv.js             # CSV parsing logic
-│   └── app.js                  # Main application
-├── template/
-│   └── cover-letter-template.txt  # Letter template
-└── README.md
+cover-letter-generator/
+├── assets/                            # Folder for storing additional resources or files
+│   ├── COMPANY_DATA.csv               # Sample company data in CSV format
+│   └── cover-letter-template-01.txt   # Predefined cover letter template
+├── node_modules/                      # Node.js dependencies
+├── output/                            # Folder for storing generated PDF files
+├── src/                               # Main source code
+│   ├── mock/                          # Mock data for testing
+│   │   ├── TEST_DATA.csv              # Test company data in CSV format
+│   │   └──                            # Other mock/test files
+│   ├── index.js                       # Main script to initialize the program
+│   └── script.js                      # Supporting scripts for functionality
+├── .gitignore                         # Git ignore file to exclude unnecessary files
+├── index.html                         # Frontend HTML file for the application
+├── package-lock.json                  # Auto-generated file for locking dependencies
+├── package.json                       # Node.js project configuration file
+├── README.md                          # Documentation file
+├── styles.css                         # Stylesheet for the frontend interface
 ```
 
 ---

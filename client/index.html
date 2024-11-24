@@ -18,12 +18,20 @@
     <main>
       <div class="form-container">
         <form id="coverLetterForm">
-          <input
-            type="text"
-            name="name"
-            id="username"
-            placeholder="Enter Your name however you want it to be displayed on your letters."
-          />
+          <div class="username">
+            <input
+              type="text"
+              name="first-name"
+              id="firstName"
+              placeholder="Your First Name"
+            />
+            <input
+              type="text"
+              name="last-name"
+              id="lastName"
+              placeholder="Your Last Name"
+            />
+          </div>
           <h2 for="companyFile">Upload Company Names (CSV):</h2>
           <input
             type="file"

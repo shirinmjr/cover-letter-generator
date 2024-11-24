@@ -61,7 +61,7 @@ This project demonstrates how to generate PDF cover letters dynamically using th
 - Read and parse the CSV file using pre built JavaScript File System Library and `readFileSync` function.
 - Extract relevant fields from CSV file
   - Split by line and remove empty rows - perhaps the end of the file,
-  - First row is the headers(Json keys),
+  - First row is the headers(JSON keys),
   - Split row by commas and replace "" where Job title not provided with empty string,
 - Map each header to its corresponding value (Key,value) pair
 
@@ -106,10 +106,6 @@ Sincerely,
 - Integrate a web-based interface for non-technical users.
 - Provide additional export formats (e.g., Word, HTML).
 
----
+✍️ Authors
+@Shirinmjr
 
-> 💡 **Pro Tip:** This project is a great foundation for building robust tools to generate dynamic, professional documents programmatically.
-
----
-
-This README provides a comprehensive overview of the project and effectively communicates its purpose, functionality, and technical implementation in an engaging and colorful manner.

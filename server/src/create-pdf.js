@@ -50,9 +50,9 @@ function createCoverLettersPDF(companiesInJson) {
   );
   console.log(COVER_LETTER_CONTENT);
 
-  const companiesJson = JSON.parse(
-    fs.readFileSync("./output/companiesJsonOutput.json", "utf-8")
-  );
+  // const companiesJson = JSON.parse(
+  //   fs.readFileSync("./output/companiesJsonOutput.json", "utf-8")
+  // );
 
   const outputFolder = "output/pdfs";
 

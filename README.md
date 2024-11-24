@@ -49,11 +49,11 @@ This project demonstrates how to generate PDF cover letters dynamically using th
 
 ## 📑 **Steps to Implement**:
 
-### 1️⃣ **Setup Project**:
+### 1️⃣ **Setup MVP Project**:
 
 - Install dependencies:
   ```bash
-  npm install express pdfkit
+  npm install pdfkit
   ```
 
 ### 2️⃣ **Process CSV Data**:
@@ -98,33 +98,6 @@ Thank you for considering my application. I look forward to the possibility of c
 Sincerely,
 [Your Name]
 ```
-
----
-
-## 📂 **Project Structure**:
-
-```plaintext
-cover-letter-generator/
-├── assets/                            # Folder for storing additional resources or files
-│   ├── COMPANY_DATA.csv               # Sample company data in CSV format
-│   └── cover-letter-template-01.txt   # Predefined cover letter template
-├── node_modules/                      # Node.js dependencies
-├── output/                            # Folder for storing generated PDF files
-├── src/                               # Main source code
-│   ├── mock/                          # Mock data for testing
-│   │   ├── TEST_DATA.csv              # Test company data in CSV format
-│   │   └──                            # Other mock/test files
-│   ├── index.js                       # Main script to initialize the program
-│   └── script.js                      # Supporting scripts for functionality
-├── .gitignore                         # Git ignore file to exclude unnecessary files
-├── index.html                         # Frontend HTML file for the application
-├── package-lock.json                  # Auto-generated file for locking dependencies
-├── package.json                       # Node.js project configuration file
-├── README.md                          # Documentation file
-├── styles.css                         # Stylesheet for the frontend interface
-```
-
----
 
 ## 🎯 **Future Enhancements**:
 

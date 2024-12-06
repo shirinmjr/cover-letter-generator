@@ -1,5 +1,6 @@
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
+const zlib = require("zlib");
 
 const companiesCSV = fs.readFileSync("./mock/TEST_DATA.csv", "utf-8");
 const TestUserFirstName = "Shirin";

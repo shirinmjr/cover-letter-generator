@@ -1,7 +1,3 @@
-Here’s an updated and detailed README file that incorporates the specified technologies, context, and problem statement:
-
----
-
 # 🌟 **Dynamic Cover Letter Generator** 🌟
 
 <h3 style="color: #2E86C1;"><strong>✨ Generate personalized, high-quality PDF cover letters dynamically from a CSV file ✨</strong></h3>

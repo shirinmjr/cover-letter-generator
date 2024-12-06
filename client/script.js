@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const lastName = lastNameInput.value.trim();
 
     const companyFile = companyFileInput.files[0]; // The first uploaded file (if any)
-    const fileName = companyFile ? companyFile.name : "No file uploaded";
-    const fileType = companyFile ? companyFile.type : "N/A";
+    // const fileName = companyFile ? companyFile.name : "No file uploaded";
+    // const fileType = companyFile ? companyFile.type : "N/A";
 
     console.log(`First Name: ${firstName}`);
     console.log(`Last Name: ${lastName}`);

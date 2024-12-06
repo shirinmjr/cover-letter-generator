@@ -8,7 +8,7 @@
       content="Generate personalized cover letters for multiple companies."
     />
     <title>Cover Letter Generator</title>
-    <!-- Link to external CSS -->
+    <!-- External CSS -->
     <link rel="stylesheet" href="style/styles.css" />
   </head>
   <body>
@@ -18,7 +18,7 @@
     <main>
       <div class="form-container">
         <form id="coverLetterForm">
-          <div class="username">
+          <div class="form-group">
             <input
               type="text"
               name="first-name"
@@ -32,35 +32,42 @@
               placeholder="Your Last Name"
             />
           </div>
-          <h2 for="companyFile">Upload Company Names (CSV):</h2>
-          <input
-            type="file"
-            id="companyFile"
-            name="companyFile"
-            accept=".csv"
-          />
-
-          <h2 for="coverLetter">Cover Letter Template:</h2>
-          <iframe
-            id="coverLetter"
-            src="../assets/cover-letter-templet-01.html"
-            width="100%"
-            height="500px"
-            style="border: none"
-            rows="6"
-            disabled="true"
-          ></iframe>
-
-          <button type="button" id="generateButton">
-            Generate Cover Letters
-          </button>
+          <div class="form-group">
+            <label for="companyFile">
+              <h2>Upload Company Names (CSV):</h2>
+            </label>
+            <input
+              type="file"
+              id="companyFile"
+              name="companyFile"
+              accept=".csv"
+            />
+          </div>
+          <div class="form-group">
+            <label for="coverLetter">
+              <h2>Cover Letter Template:</h2>
+            </label>
+            <iframe
+              id="coverLetter"
+              src="../assets/cover-letter-templet-01.html"
+              width="100%"
+              height="500"
+              style="border: none"
+              disabled
+            ></iframe>
+          </div>
+          <div class="form-group">
+            <button type="button" id="generateButton">
+              Generate Cover Letters
+            </button>
+          </div>
         </form>
       </div>
     </main>
     <footer>
       <p>&copy; 2024 Shirin Mohajer</p>
     </footer>
-    <!-- Link to external JavaScript -->
+    <!-- External JavaScript -->
     <script src="server.js" defer></script>
   </body>
 </html>

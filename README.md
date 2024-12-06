@@ -14,7 +14,6 @@ Here’s an updated and detailed README file that incorporates the specified tec
 
 - **JavaScript**: For data manipulation and scripting.
 - **Node.js**: Backend runtime environment.
-- **Express**: To handle routing and server operations.
 - **PDFKit**: To generate high-quality, customizable PDF documents.
 - **File Reader/Writer (fs)**: For reading the input CSV and writing PDF files.
 

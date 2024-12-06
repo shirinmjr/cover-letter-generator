@@ -9,7 +9,7 @@
     />
     <title>Cover Letter Generator</title>
     <!-- External CSS -->
-    <link rel="stylesheet" href="style/styles.css" />
+    <link rel="stylesheet" href="../style/styles.css" />
   </head>
   <body>
     <header>
@@ -47,12 +47,14 @@
             <label for="coverLetter">
               <h2>Cover Letter Template:</h2>
             </label>
-            <object
-              data="cover-letter-template-01.txt"
-              type="text/plain"
+            <iframe
+              id="coverLetter"
+              src="./assets/cover-letter-template-01.txt"
               width="100%"
-              height="400"
-            ></object>
+              height="500"
+              style="border: none"
+              disabled
+            ></iframe>
           </div>
           <div class="form-group">
             <button type="button" id="generateButton">

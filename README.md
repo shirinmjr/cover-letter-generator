@@ -2,7 +2,7 @@
 
 <h3 style="color: #2E86C1;"><strong>✨ Generate personalized, high-quality PDF cover letters dynamically from a CSV file ✨</strong></h3>
 
-> **A program that leverages modern JavaScript tools to process CSV data and create dynamic PDF cover letters for each company in the list.**
+> **A program that leverages JavaScript tools to process CSV data and creates PDF cover letters for each company in the list.**
 
 ---
 
@@ -32,6 +32,7 @@ This project demonstrates how to generate PDF cover letters dynamically using th
      - **Address**
      - **City, State, Zip**
      - **Recipient Name**
+     - **Recipient Job Titile (Optional)**
 
 2. **Cover Letter Template**:
 
@@ -102,5 +103,5 @@ Sincerely,
 - Enhanced Document Styling: Add options to include professional styling elements such as company logos, headers, footers, and custom fonts to create polished and visually appealing cover letters.
 
 ## ✍️ Authors
-@Shirinmjr
+[@Shirinmjr](https://github.com/shirinmjr)
 

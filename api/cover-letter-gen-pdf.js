@@ -1,31 +1,53 @@
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
-const zlib = require("zlib");
+//const zlib = require("zlib");
 
-const companiesCSV = fs.readFileSync("./mock/TEST_DATA.csv", "utf-8");
+//Dev data
+const companiesCSV = fs.readFileSync("./mock/TEST_DATA.csv", "utf-8"); //Address for the company detail file - temporary
 const TestUserFirstName = "Shirin";
 const TestUserLastName = "Mohajer";
-const coverLetterTempFilePath =
-  "../../client/public/assets/cover-letter-template-01.txt";
+const coverLetterTempFilePath = "../client/assets/cover-letter-template-01.txt";
 
 function csvToJson(companiesCSV) {
-  const rows = companiesCSV.split("\n").filter((row) => row.trim() !== ""); // Split by line and remove empty rows - perhaps the end of the file
-  const headers = rows[0].split(",").map((header) => header.trim()); // First row is the headers(Json keys)
+  const rows = companiesCSV.split("\n").filter((row) => row.trim() !== "");
+  const headers = rows[0].split(",").map((header) => header.trim());
+
+  const parseRow = (row) => {
+    const values = [];
+    let current = "";
+    let insideQuotes = false;
+
+    for (let i = 0; i < row.length; i++) {
+      const char = row[i];
+      if (char === '"' && row[i + 1] !== '"') {
+        // Toggle insideQuotes for unescaped quotes
+        insideQuotes = !insideQuotes;
+      } else if (char === "," && !insideQuotes) {
+        // If comma is encountered and not inside quotes, add current value
+        values.push(current.trim());
+        current = "";
+      } else {
+        // Add character to current value
+        current += char;
+      }
+    }
+    values.push(current.trim());
+    return values.map((value) => value.replace(/^"|"$/g, "").trim());
+  };
 
   const CompaniesArrayOfJSON = rows.slice(1).map((row) => {
-    const values = row
-      .split(",")
-      .map((value) => value.trim().replace(/^"|"$/g, "")); // Remove quotes from values // Split row by commas and replace "" where Job title not provided with empty string
+    const values = parseRow(row);
     const companiesObject = {};
 
     headers.forEach((header, index) => {
-      companiesObject[header] = values[index] || ""; // Map each header to its corresponding value (Key,value) pair
+      companiesObject[header] = values[index] || "";
     });
 
     return companiesObject;
   });
-  console.log(`JSON file for input CSV file ${companiesCSV.filename} created`);
-  return CompaniesArrayOfJSON; //Array of companies' object
+
+  console.log(`JSON created from CSV:`, CompaniesArrayOfJSON);
+  return CompaniesArrayOfJSON; // Return array of company objects
 }
 
 //Write to file
@@ -68,10 +90,10 @@ function createCoverLettersPDF(companiesInJson) {
       /\[Company Name\]/g,
       company.company || "Dear Hiring Manager"
     )
-      .replace(/\[Address\]/g, company.address || "Unknown Address")
+      .replace(/\[Address\]/g, company.address || "")
       .replace(
         /\[City, State Zip\]/g,
-        `${company.city}, ${company.state} ${company.zip}` || "Unknown Location"
+        `${company.city}, ${company.state} ${company.zip}` || ""
       )
       .replace(
         /\[Name\]/g,
@@ -88,22 +110,34 @@ function createCoverLettersPDF(companiesInJson) {
       index + 1
     }.pdf`;
     const writeStream = fs.createWriteStream(pdfPath);
-
+    /**
+     * PDFDocument instances are **readable** Node streams.
+     * They don't get saved anywhere automatically,
+     * but you can call the pipe method to send the output of the PDF document to another writable Node stream as it is being written.
+     * When you're done with your document, call the end method to finalize it.
+     */
     pdfDoc.pipe(writeStream);
     pdfDoc
       .font("Times-Roman")
       .fontSize(12)
       .text(personalizedLetter, { align: "left" });
-
+    /**
+     * PDFDocument instances are readable Node streams.
+     * They don't get saved anywhere automatically,
+     * but you can call the pipe method to send the output of the PDF document to another writable Node stream as it is being written.
+     * When you're done with your document, call the end method to finalize it.
+     */
     pdfDoc.end();
 
     console.log(`PDF created: ${pdfPath}`);
   });
 }
 
-// Convert CSV to JSON
+// Convert CSV to JSON -- convert step
 const CompaniesArrayOfJSON = csvToJson(companiesCSV);
 // Write the JSON to a file -- first step
 writeJsonToFile(CompaniesArrayOfJSON, "companiesJsonOutput.json");
-//Create PDF off of JSON file Using PDFKit
-createCoverLettersPDF(CompaniesArrayOfJSON);
+//Create PDF off of JSON file Using PDFKit - create step
+const coverLettersPDFList = createCoverLettersPDF(CompaniesArrayOfJSON);
+console.log(coverLettersPDFList);
+//compressToZipFile(coverLettersPDFList);

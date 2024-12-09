@@ -47,7 +47,7 @@ function csvToJson(companiesCSV) {
   });
 
   console.log(`JSON created from CSV:`, CompaniesArrayOfJSON);
-  return CompaniesArrayOfJSON; // Return array of company objects
+  return CompaniesArrayOfJSON;
 }
 
 //Write to file
